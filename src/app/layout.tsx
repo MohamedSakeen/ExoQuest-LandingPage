@@ -14,30 +14,69 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
+const rawSiteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+const SITE_URL = rawSiteUrl && rawSiteUrl.startsWith("http") ? rawSiteUrl : "https://exoquest.dev";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "ExoQuest — Explore. Exploit. Conquer.",
-    template: "%s | ExoQuest",
+    default: "ExoQuest — Next-Gen CTF & Cybersecurity Practice Platform",
+    template: "%s | ExoQuest CTF Platform",
   },
   description:
-    "ExoQuest is a next-generation CTF and cybersecurity platform with hands-on challenges, competitions, and team play.",
+    "Master cybersecurity with hands-on CTF challenges, live hacking competitions, and interactive labs. Practice web exploitation, cryptography, reverse engineering, and pwn on ExoQuest.",
   applicationName: "ExoQuest",
-  keywords: ["CTF", "Capture The Flag", "cybersecurity", "competitions", "ethical hacking"],
+  keywords: [
+    "CTF platform",
+    "cybersecurity practice",
+    "learn ethical hacking",
+    "Capture The Flag challenges",
+    "cybersecurity training",
+    "hands-on hacking labs",
+    "web security labs",
+    "binary exploitation",
+    "reverse engineering",
+    "cryptography CTF",
+    "cybersecurity competitions",
+    "ethical hacking platform",
+    "infosec training",
+    "penetration testing practice",
+    "TryHackMe alternative",
+    "Hack The Box alternative",
+  ],
   authors: [{ name: "ExoQuest Team" }],
   creator: "ExoQuest",
   publisher: "ExoQuest",
-  robots: { index: true, follow: true },
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
+    url: SITE_URL,
     siteName: "ExoQuest",
-    title: "ExoQuest — Explore. Exploit. Conquer.",
-    description: "Hands-on cybersecurity challenges and team competitions.",
+    title: "ExoQuest — Next-Gen CTF & Cybersecurity Practice Platform",
+    description:
+      "Master ethical hacking with hands-on CTF challenges, live hacking competitions, and interactive cybersecurity labs.",
+    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "ExoQuest CTF Platform" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "ExoQuest — Explore. Exploit. Conquer.",
-    description: "Hands-on cybersecurity challenges and team competitions.",
+    title: "ExoQuest — Next-Gen CTF & Cybersecurity Practice Platform",
+    description:
+      "Master ethical hacking with hands-on CTF challenges, live hacking competitions, and interactive cybersecurity labs.",
+    images: ["/og/default.png"],
   },
   icons: { icon: "/favicon.ico" },
 };
